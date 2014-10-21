@@ -19,6 +19,7 @@ GET http://archive.gopop.co/users/[id]-[page-number].json
 Example:
 
 http://archive.gopop.co/users/1-0.json
+
 http://archive.gopop.co/users/1-1.json
 
 with page number starting at 0.
