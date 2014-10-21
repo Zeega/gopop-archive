@@ -1,6 +1,13 @@
 $(document).ready(function() {
 
-    var post = new PostModel();
+    var url = window.location.pathname.split("/");
+    var postId = parseInt( url[url.length - 1] );
+
+    if (isNaN(postId)) {
+        postId = 118690;
+    }
+
+    var post = new PostModel({id: postId});
     post.fetch()
         .success(function() {
             onSuccess( post );
@@ -24,7 +31,8 @@ function onSuccess( post ) {
 var PostModel = Backbone.Model.extend({
 
     url: function() {
-        return "http://archive.gopop.co.s3-us-west-1.amazonaws.com/posts/118680.json";
+
+        return "http://archive.gopop.co.s3-us-west-1.amazonaws.com/posts/"+ this.id +".json";
     }
 
 });
