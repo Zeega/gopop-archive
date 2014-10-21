@@ -1,0 +1,36 @@
+.clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+.user-page-wrapper {
+    
+    .post-grid-wrapper {
+        .clearfix;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            .post-grid-square {
+                height: 960px / 6;
+                width: 960px / 6;
+                background-color: #FF00FF;
+                float: left;
+                position: relative;
+
+                .post-grid-internal {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
+    }
+
+
+}

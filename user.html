@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GoPop</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <div class="wrapper user-page-wrapper">
+            <header>
+                <div class="container">
+                    <a href="http://gopop.co"><img class="head-logo" src="images/gopop-logo-60.png"/></a>
+                    <span class="tagline">visual conversation</span>
+                </div>
+            </header>
+
+            <article>
+
+                <div class="user-banner">
+                    <div class="user-profile-image"></div>
+                    <div class="user-username"></div>
+                    <div class="user-fullname"></div>
+                </div>
+
+                <div class="post-grid-wrapper">
+                    <ul></ul>
+                </div> <!-- .post-grid-wrapper -->
+            </article>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/vendor/underscore.js"></script>
+        <script src="js/vendor/backbone.js"></script>
+        <script src="js/gopop-user.js"></script>
+
+        <!-- HTML Templates -->
+        <script id="post-grid-template" type="text/x-underscore-template">
+            <a href="#" class="view-post" id="post-<%= postId %>">
+                <div class="post-grid-internal post-grid-clipB" style="
+                    background-image: url(<%= coverA %>);
+                    background-size: cover;
+                    background-position: center;
+                "></div>
+                <div class="post-grid-internal post-grid-clipA" style="
+                    background-image: url(<%= coverB %>);
+                    background-size: cover;
+                    background-position: center;
+                "></div>
+                <div class="post-grid-internal post-grid-overlay"></div>
+            </a>
+        </script>
+
+        <script id="post-overlay-template" type="text/x-underscore-template">
+            <div class="overlay-post-wrapper post-wrapper">
+                <div class="left-square">
+                        <div class="post-player">
+                            <div class="post-animated-image">
+                                <img src="<%= model.get('video').gif_url %>"/>
+                            </div>
+                            <div class="post-overlay"></div>
+                        </div><!-- post-player -->
+                    </div>
+                    <div class="right-square">
+                        <div class="inner-wrapper">
+                            <div class="user-banner">
+                                <div class="user-profile-image"></div>
+                                <div class="user-username"></div>
+                            </div>
+                            <div class="post-caption"></div>
+                            <div class="social-links">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/twitter.png"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/facebook.png"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/email.png"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><!-- .right-square -->
+            </div>
+            <a href="#" class="close-overlay post-<%= model.id %>"></a>
+
+        </script>
+
+    </body>
+</html>
