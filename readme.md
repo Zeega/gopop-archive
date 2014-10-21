@@ -18,7 +18,7 @@ GET http://archive.gopop.co/users/[id]-[page-number].json
 
 with the page number starting on 0.
 
-Example:
+Example (user with id = 1):
 
 http://archive.gopop.co/users/1-0.json
 
@@ -52,7 +52,7 @@ The user feed is paginated. Each user has a set of files with the following form
 GET http://archive.gopop.co/posts/[id].json
 ```
 
-Example:
+Example (post with id = 118680):
 
 http://archive.gopop.co/posts/118680.json
 
