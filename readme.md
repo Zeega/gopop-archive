@@ -16,13 +16,14 @@ https://github.com/Zeega/Pop-Scripts/tree/master/pop-to-s3
 GET http://archive.gopop.co/users/[id]-[page-number].json
 ```
 
+with the page number starting on 0.
+
 Example:
 
 http://archive.gopop.co/users/1-0.json
 
 http://archive.gopop.co/users/1-1.json
 
-with page number starting at 0.
 
 #### Response format
 
