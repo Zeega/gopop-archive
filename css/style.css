@@ -457,6 +457,70 @@ header .tagline {
   color: #999;
   font-weight: lighter;
 }
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.post-wrapper {
+  width: 960px;
+  height: 480px;
+  outline: 1px solid #ccc;
+  background-color: white;
+}
+.post-wrapper .left-square,
+.post-wrapper .right-square {
+  float: left;
+  height: 100%;
+  width: 50%;
+}
+.post-wrapper .inner-wrapper {
+  padding: 20px;
+  height: calc(100% - 40px);
+  position: relative;
+}
+.post-wrapper .user-banner:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.post-wrapper .user-banner:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.post-wrapper .user-banner:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.post-wrapper .user-banner .user-profile-image,
+.post-wrapper .user-banner .user-username {
+  float: left;
+}
+.post-wrapper .user-banner .user-username {
+  font-size: 30px;
+  margin-left: 20px;
+  font-weight: lighter;
+}
+.post-caption {
+  padding: 20px 0;
+  color: #444;
+}
+.social-links {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.social-links ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.social-links ul li {
+  float: left;
+  margin-right: 10px;
+}
 .post-player {
   width: 480px;
   height: 480px;
@@ -482,60 +546,12 @@ header .tagline {
   display: table;
   clear: both;
 }
-.single-post-wrapper .post-wrapper {
-  width: 960px;
-  height: 480px;
-  outline: 1px solid #ccc;
-}
-.single-post-wrapper .post-wrapper .left-square,
-.single-post-wrapper .post-wrapper .right-square {
-  float: left;
-  height: 100%;
-  width: 50%;
-}
-.single-post-wrapper .post-wrapper .inner-wrapper {
-  padding: 20px;
-  height: calc(100% - 40px);
-  position: relative;
-}
-.single-post-wrapper .post-wrapper .user-banner:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.single-post-wrapper .post-wrapper .user-banner:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.single-post-wrapper .post-wrapper .user-banner .user-profile-image,
-.single-post-wrapper .post-wrapper .user-banner .user-username {
-  float: left;
-}
-.single-post-wrapper .post-wrapper .user-banner .user-username {
-  font-size: 30px;
-  margin-left: 20px;
-  font-weight: lighter;
-}
-.single-post-wrapper .post-caption {
-  padding: 20px 0;
-  color: #444;
-}
-.single-post-wrapper .social-links {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-}
-.single-post-wrapper .social-links ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.single-post-wrapper .social-links ul li {
-  float: left;
-  margin-right: 10px;
-}
 .clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.user-page-wrapper .post-grid-wrapper:after {
   content: "";
   display: table;
   clear: both;

@@ -74,10 +74,14 @@
                     <div class="right-square">
                         <div class="inner-wrapper">
                             <div class="user-banner">
-                                <div class="user-profile-image"></div>
-                                <div class="user-username"></div>
+                                <div class="user-profile-image" style="
+                                    background-image: url(<%= model.get('user').profile_image %>);
+                                    background-size: cover;
+                                    background-position: center;
+                                "></div>
+                                <div class="user-username"><%= model.get('user').username %></div>
                             </div>
-                            <div class="post-caption"></div>
+                            <div class="post-caption"><%= model.get("caption") %></div>
                             <div class="social-links">
                                 <ul>
                                     <li>
