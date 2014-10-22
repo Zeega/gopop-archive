@@ -70,12 +70,12 @@ http://archive.gopop.co/posts/118680.json
 #### API endpoint
 
 ```
-GET http://archive.gopop.co/posts/[root-post-id].json
+GET http://archive.gopop.co/conversations/[root-post-id].json
 ```
 
 Example:
 
-http://archive.gopop.co/posts/11.json
+http://archive.gopop.co/conversations/11.json
 
 #### Response format
 
