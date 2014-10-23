@@ -566,6 +566,35 @@ header .tagline {
   display: table;
   clear: both;
 }
+.user-page-wrapper .user-banner {
+  margin-bottom: 20px;
+}
+.user-page-wrapper .user-banner:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.user-page-wrapper .user-banner:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.user-page-wrapper .user-banner:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.user-page-wrapper .user-banner .user-profile-image {
+  float: left;
+  margin-right: 20px;
+}
+.user-page-wrapper .user-banner .user-username {
+  font-size: 30px;
+  font-weight: lighter;
+}
+.user-page-wrapper .user-banner .user-fullname {
+  color: #999;
+}
 .user-page-wrapper .post-grid-wrapper:after {
   content: "";
   display: table;
