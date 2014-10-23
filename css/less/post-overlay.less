@@ -2,14 +2,17 @@
     position: fixed;
     height: 100%;
     width: 100%;
-    background-color: rgba(255,255,255,0.7);
+    top: 0;
+    left: 0;
     z-index: 999;
 
-    a {
+    .close-overlay {
         height: 100%;
         width: 100%;
         display: block;
         position: absolute;
+        z-index: 1;
+        background-color: rgba(255,255,255,0.7);
     }
 
     .overlay-post-wrapper {
@@ -21,5 +24,6 @@
         right: 0;
         bottom: 0;
         position: absolute;
+        z-index: 2;
     }
 }

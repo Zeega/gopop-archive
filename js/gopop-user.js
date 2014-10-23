@@ -2,11 +2,15 @@
 
 $(document).ready(function() {
 
-    var user = new UserModel();
+    window.user = new UserModel();
     user.fetch()
         .success(function() {
             onSuccess( user );
         });
+
+    window.onscroll = function() {
+        loadMoreOnScroll( user );
+    }
 
 });
 
@@ -26,6 +30,36 @@ function onSuccess( user ) {
         gridSquare.render();
         $(".post-grid-wrapper ul").append( gridSquare.el );
     });
+
+
+    if ( shouldLoadMore() ) {
+        user.postCollection.fetch({remove: false}).success(function() {
+            onSuccess( user );
+        });
+    }
+}
+
+var loadMoreOnScroll = _.debounce(function( user ) {
+    if ( shouldLoadMore() ) {
+        user.postCollection.fetch({remove: false}).success(function() {
+            onSuccess( user );
+        });
+    }
+}, 1000)
+
+var shouldLoadMore = function() {
+    if (window.user.postCollection.canFetchMore) {
+        var bottomPosition = $(".post-grid-wrapper").offset().top + $(".post-grid-wrapper").height();
+        bottomPosition -= $("body").scrollTop();
+
+        if ( bottomPosition > window.innerHeight ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    return false;
 }
 
 
@@ -62,7 +96,6 @@ var PostOverlayView = Backbone.View.extend({
     },
 
     closeOverlay: function() {
-        console.log('closeOverlay')
         this.$el.remove()
     },
 
@@ -90,10 +123,21 @@ var PostModel = Backbone.Model.extend({
 
 var PostCollection = Backbone.Collection.extend({
 
-    model: PostModel
-    // url: function() {
-    //     return "http://archive.gopop.co/users/1-0.json";
-    // }
+    canFetchMore: true,
+
+    url: function() {
+        var pageNumber = Math.floor(this.length / 10);
+
+        return "http://archive.gopop.co/users/1-"+ pageNumber +".json";
+    },
+
+    model: PostModel,
+
+    parse: function( response ) {
+        this.canFetchMore = response.posts.length == 10
+
+        return response.posts;
+    }
 
 });
 
@@ -107,6 +151,7 @@ var UserModel = Backbone.Model.extend({
 
     parse: function( response ) {
         this.postCollection.add(response.posts)
+        this.postCollection.canFetchMore = response.posts.length == 10;
 
         return response.user;
     }

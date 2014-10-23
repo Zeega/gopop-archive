@@ -7,59 +7,60 @@
 }
 
 .post-wrapper {
-        width: 960px;
-        height: 960px / 2;
-        outline: 1px solid #ccc;
-        background-color: white;
+    width: 960px;
+    height: 960px / 2;
+    outline: 1px solid #ccc;
+    background-color: white;
 
-        .left-square,
-        .right-square {
-            float: left;
-            height: 100%;
-            width: 50%;
-        }
+    .left-square,
+    .right-square {
+        float: left;
+        height: 100%;
+        width: 50%;
+    }
         
-        .inner-wrapper {
-            padding: 20px;
-            height: ~"calc(100% - 40px)";
-            position: relative;
-        }
-
-        .user-banner {
-            .clearfix;
-            .user-profile-image,
-            .user-username {
-                float: left;
-            }
-
-            .user-username {
-                font-size: 30px;
-                margin-left: 20px;
-                font-weight: lighter;
-            }
-        }
+    .inner-wrapper {
+        padding: 20px;
+        height: ~"calc(100% - 40px)";
+        position: relative;
     }
 
-    .post-caption {
-        padding: 20px 0;
-        color: #444;
-    }
+    .user-banner {
+        .clearfix;
+        .user-profile-image,
+        .user-username {
+            float: left;
+        }
 
-    .social-links {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        ul {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-
-            li {
-                float: left;
-                margin-right: 10px; 
-            }
+        .user-username {
+            font-size: 30px;
+            margin-left: 20px;
+            font-weight: lighter;
         }
     }
+}
+
+.post-caption {
+    padding: 20px 0;
+    color: #444;
+}
+
+.social-links {
+    .clearfix();
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            float: left;
+            margin-right: 10px; 
+        }
+    }
+}
 
 
 .post-player {
