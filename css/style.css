@@ -594,6 +594,7 @@ header .tagline {
 }
 .user-page-wrapper .user-banner .user-fullname {
   color: #999;
+  font-weight: lighter;
 }
 .user-page-wrapper .post-grid-wrapper:after {
   content: "";
@@ -655,4 +656,18 @@ header .tagline {
   bottom: 0;
   position: absolute;
   z-index: 2;
+}
+#chain-wrapper ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+#chain-wrapper ul li {
+  display: inline-block;
+}
+#chain-wrapper ul li div {
+  position: relative;
 }
