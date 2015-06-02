@@ -1,13 +1,6 @@
 $(document).ready(function() {
 
-    var url = window.location.pathname.split("/");
-    var postId = parseInt( url[url.length - 1] );
-
-    if (isNaN(postId)) {
-        postId = 118690;
-    }
-
-    var post = new PostModel({id: postId});
+    var post = new PostModel({id: postId()});
     post.fetch()
         .success(function() {
             onSuccess( post );
@@ -15,6 +8,15 @@ $(document).ready(function() {
 
 });
 
+function postId() {
+    if(window.location.hash) {
+      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+
+      return hash;
+  } else {
+    return 1111;
+  }
+}
 
 function onSuccess( post ) {
     $(".post-animated-image img").attr("src", post.get("video").gif_url);
