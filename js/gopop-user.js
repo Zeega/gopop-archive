@@ -12,6 +12,7 @@ $(document).ready(function() {
 
 function fetchUser() {
     window.user = new UserModel();
+    user.userId = userId();
     user.reset();
     user.fetch()
         .success(function() {
@@ -96,6 +97,7 @@ var PostGridView = Backbone.View.extend({
     render: function () {
         var template = _.template($('#post-grid-template').html());
         var args = {
+            userId: user.userId,
             postId: this.model.id,
             coverA: this.model.get("clips")[0].thumbnail_url,
             coverB: this.model.get("clips")[1].thumbnail_url
@@ -146,7 +148,7 @@ var PostCollection = Backbone.Collection.extend({
     url: function() {
         var pageNumber = Math.floor(this.length / 10);
         var userId = window.location.hash;
-        return "http://archive.gopop.co/users/"+ userId() +"-"+ pageNumber +".json";
+        return "http://archive.gopop.co/users/"+ user.userId +"-"+ pageNumber +".json";
     },
 
     model: PostModel,
@@ -161,8 +163,10 @@ var PostCollection = Backbone.Collection.extend({
 
 var UserModel = Backbone.Model.extend({
 
+    userId: 1,
+
     url: function() {
-        return "http://archive.gopop.co/users/"+ userId() +"-0.json";
+        return "http://archive.gopop.co/users/"+ this.userId +"-0.json";
     },
 
     postCollection: new PostCollection(),
