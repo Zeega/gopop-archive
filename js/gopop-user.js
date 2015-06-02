@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 function fetchUser() {
     window.user = new UserModel();
-    user.userId = userId();
+    user.username = username();
     user.reset();
     user.fetch()
         .success(function() {
@@ -24,13 +24,13 @@ function fetchUser() {
     };
 }
 
-function userId() {
+function username() {
     if(window.location.hash) {
       var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
 
       return hash;
   } else {
-    return 1;
+    return "brandao";
   }
 }
 
@@ -97,7 +97,7 @@ var PostGridView = Backbone.View.extend({
     render: function () {
         var template = _.template($('#post-grid-template').html());
         var args = {
-            userId: user.userId,
+            userId: user.username,
             postId: this.model.id,
             coverA: this.model.get("clips")[0].thumbnail_url,
             coverB: this.model.get("clips")[1].thumbnail_url
@@ -147,7 +147,7 @@ var PostCollection = Backbone.Collection.extend({
 
     url: function() {
         var pageNumber = Math.floor(this.length / 10);
-        var userId = window.location.hash;
+        var userId = username();
         return "http://archive.gopop.co/users/"+ user.userId +"-"+ pageNumber +".json";
     },
 
@@ -163,10 +163,10 @@ var PostCollection = Backbone.Collection.extend({
 
 var UserModel = Backbone.Model.extend({
 
-    userId: 1,
+    username: "brandao",
 
     url: function() {
-        return "http://archive.gopop.co/users/"+ this.userId +"-0.json";
+        return "http://archive.gopop.co/users/"+ this.username +"-0.json";
     },
 
     postCollection: new PostCollection(),
