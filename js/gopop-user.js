@@ -2,7 +2,17 @@
 
 $(document).ready(function() {
 
+    fetchUser();
+
+    window.onhashchange = function() {
+        $(".post-grid-wrapper ul").empty();
+        fetchUser();
+    };
+});
+
+function fetchUser() {
     window.user = new UserModel();
+    user.reset();
     user.fetch()
         .success(function() {
             onSuccess( user );
@@ -10,10 +20,18 @@ $(document).ready(function() {
 
     window.onscroll = function() {
         loadMoreOnScroll( user );
-    }
+    };
+}
 
-});
+function userId() {
+    if(window.location.hash) {
+      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
 
+      return hash;
+  } else {
+    return 1;
+  }
+}
 
 function onSuccess( user ) {
     $(".user-profile-image").css({
@@ -45,7 +63,7 @@ var loadMoreOnScroll = _.debounce(function( user ) {
             onSuccess( user );
         });
     }
-}, 1000)
+}, 1000);
 
 var shouldLoadMore = function() {
     if (window.user.postCollection.canFetchMore) {
@@ -60,7 +78,7 @@ var shouldLoadMore = function() {
     }
 
     return false;
-}
+};
 
 
 var PostGridView = Backbone.View.extend({
@@ -96,7 +114,7 @@ var PostOverlayView = Backbone.View.extend({
     },
 
     closeOverlay: function() {
-        this.$el.remove()
+        this.$el.remove();
     },
 
     render: function () {
@@ -117,7 +135,7 @@ var PostModel = Backbone.Model.extend({
     showPostOverlay: function() {
         this.overlay = new PostOverlayView({model: this});
         this.overlay.render();
-        $("body").prepend( this.overlay.el )
+        $("body").prepend( this.overlay.el );
     }
 });
 
@@ -127,14 +145,14 @@ var PostCollection = Backbone.Collection.extend({
 
     url: function() {
         var pageNumber = Math.floor(this.length / 10);
-
-        return "http://archive.gopop.co/users/1-"+ pageNumber +".json";
+        var userId = window.location.hash;
+        return "http://archive.gopop.co/users/"+ userId() +"-"+ pageNumber +".json";
     },
 
     model: PostModel,
 
     parse: function( response ) {
-        this.canFetchMore = response.posts.length == 10
+        this.canFetchMore = response.posts.length == 10;
 
         return response.posts;
     }
@@ -144,16 +162,20 @@ var PostCollection = Backbone.Collection.extend({
 var UserModel = Backbone.Model.extend({
 
     url: function() {
-        return "http://archive.gopop.co/users/1-0.json";
+        return "http://archive.gopop.co/users/"+ userId() +"-0.json";
     },
 
     postCollection: new PostCollection(),
 
     parse: function( response ) {
-        this.postCollection.add(response.posts)
+        this.postCollection.add(response.posts);
         this.postCollection.canFetchMore = response.posts.length == 10;
 
         return response.user;
+    },
+
+    reset: function() {
+        this.postCollection.reset();
     }
 
 });
