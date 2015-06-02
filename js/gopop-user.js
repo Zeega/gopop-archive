@@ -148,7 +148,7 @@ var PostCollection = Backbone.Collection.extend({
     url: function() {
         var pageNumber = Math.floor(this.length / 10);
         var userId = username();
-        return "http://archive.gopop.co/users/"+ user.userId +"-"+ pageNumber +".json";
+        return "http://archive.gopop.co/users/"+ user.username +"-"+ pageNumber +".json";
     },
 
     model: PostModel,
