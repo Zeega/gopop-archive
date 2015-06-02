@@ -112,7 +112,8 @@ var PostOverlayView = Backbone.View.extend({
     className: "post-overlay",
 
     events: {
-        "click .close-overlay": "closeOverlay"
+        "click .close-overlay": "closeOverlay",
+        "click": "closeOverlay"
     },
 
     closeOverlay: function() {

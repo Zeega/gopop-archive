@@ -671,3 +671,35 @@ header .tagline {
 #chain-wrapper ul li div {
   position: relative;
 }
+@media only screen and (max-device-width: 480px) {
+  .wrapper {
+    width: 100%;
+  }
+  .head-logo {
+    width: 50%;
+  }
+  .user-banner {
+    padding: 20px;
+  }
+  .post-overlay .overlay-post-wrapper,
+  .post-wrapper {
+    width: 100%;
+    outline: none;
+  }
+  .post-overlay .overlay-post-wrapper .left-square,
+  .post-wrapper .left-square,
+  .post-overlay .overlay-post-wrapper .right-square,
+  .post-wrapper .right-square {
+    width: 100%;
+    height: auto;
+  }
+  .post-overlay .overlay-post-wrapper .right-square .inner-wrapper .user-banner,
+  .post-wrapper .right-square .inner-wrapper .user-banner {
+    padding: 0px;
+  }
+  .post-overlay .overlay-post-wrapper .post-player,
+  .post-wrapper .post-player {
+    width: 100%;
+    height: auto;
+  }
+}
